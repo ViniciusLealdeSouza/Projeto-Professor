@@ -1,0 +1,79 @@
+ionic cordova plugin add cordova-sqlite-storage
+npm install --save @ionic-native/sqlite
+
+ionic cordova platform add browser
+	
+ionic cordova platform add android
+ionic cordova platform remove android
+	
+ionic cordova platform add ios
+
+ionic cordova run browser
+
+ionic cordova run android --device
+
+Cordova plugin add cordova-plugin-crosswalk-webview --v16
+
+ionic cordova build android --prod --release
+
+cordova build --release -- --minSdkVersion=21 
+
+https://www.youtube.com/watch?v=utXTMzFfSHQ
+
+http://www.fabricadecodigo.com/crud-sqlite-ionic/
+http://www.fabricadecodigo.com/crud-sqlite-ionic/
+
+https://www.techiediaries.com/mocking-native-sqlite-plugin/
+
+
+npm install --save @ionic-native/sqlite
+
+src/app/app.module.ts 
+  import { SQLite } from '@ionic-native/sqlite';
+  SQLite
+
+Home.ts
+  import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+
+  public database: SQLiteObject;
+  
+  public invoices: Array<Object>;  
+  
+  public counter : number = 0;
+
+  constructor(public navCtrl: NavController,private sqlite : SQLite) {
+
+  }
+
+  
+  ionViewDidEnter(){
+    
+        console.log('view did enter');
+        
+         this.sqlite.create({name: "data.db", location: "default"})
+             .then((db : SQLiteObject) => {
+
+                this.database = db;
+
+                //this.createTable();
+            }, 
+                 (error) => {
+ 
+               console.log("ERROR: ", error);
+        
+      }); 
+
+public addCategoria(categoriaDto) {
+     let sql = 'insert into categoria (descricao) values (?)';
+     return this.db.executeSql(sql,[categoriaDto.descricao]);
+  }
+
+  public updateCategoria(categoriaDto) {
+    let sql = 'update categoria set descricao = ? where IdCategoria = ?';
+    return this.db.executeSql(sql,[categoriaDto.descricao, categoriaDto.IdCategoria]);
+  }
+
+  public deleteCategoria(categoriaDto) {
+    let sql = 'delete from categoria where IdCategoria = ?';
+    return this.db.executeSql(sql,[categoriaDto.IdCategoria]);
+  }

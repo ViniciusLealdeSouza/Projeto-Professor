@@ -1,0 +1,63 @@
+1 - Criar o projeto blank
+2 - Adicionar a plataforma
+3 - Adicionar o controle para versão anterior
+4 - Arquivo app.componentes.ts
+   import { Component, ViewChild } from '@angular/core';
+
+   import { Nav,Platform } from 'ionic-angular';
+   @ViewChild(Nav) nav: Nav;
+
+  
+   rootPage:any = HomePage;
+
+  
+   pages: Array<{title: string, component: any}>;
+   constructor(public platform: Platform, 
+
+   this.pages = [
+      
+      { title: 'Home', component: HomePage },
+      
+      { title: 'Categoria', component : 'CategoriaPage'},
+      
+      { title: 'Produto', component : 'ProdutoPage'},
+      
+      { title: 'Fechar', component : 'Fechar'}
+    ];
+
+      openPage(page) {
+    
+          // Reset the content nav to have just this page
+    
+          // we wouldn't want the back button to show in this scenario
+    
+          if (page.title == "Fechar")
+    
+           {
+        this.platform.exitApp();
+    
+          }
+    else
+    
+      {
+        this.nav.setRoot(page.component);
+    }
+  }
+5 - Arquivo app.html.
+6 - Arquivo Home
+7 - Criar páginas Categoria e Produto
+
+8 - Adicionar o plugin sqlite
+ionic cordova plugin add cordova-sqlite-storage
+npm install --save @ionic-native/sqlite
+
+cordova plugin ls
+...
+9 - Criar a Model
+10 - Criar os providers
+- database
+- categoria
+- produto
+
+11 - Incluir Categoria
+12 - Incluir Produto
